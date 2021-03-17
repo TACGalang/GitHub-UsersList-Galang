@@ -46,7 +46,7 @@ class Client {
     // Private Init
     private init() {}
 
-    func get(userWithCompletion completion: @escaping (_ userModels:[UserModel]?)->()) {
+    func get(userWithCompletion completion: @escaping (_ userModels:[UserModel]?, _ error: ErrorLimitModel?)->()) {
         
         alamofireManager.request(baseURL, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
             .responseJSON { (response) in
@@ -55,17 +55,17 @@ class Client {
                 case .success(_ ):
                     if let data = response.data {
                         if let models = try? JSONDecoder().decode([UserModel].self, from: data) {
-                            completion(models)
-                        } else {
+                            completion(models, nil)
+                        } else if let model = try? JSONDecoder().decode(ErrorLimitModel.self, from: data) {
                             // decode error here
-                            completion(nil)
+                            completion(nil, model)
                         }
                     } else {
                         // decode error here
-                        completion(nil)
+                        completion(nil, ErrorLimitModel(message: "Unable to decode.", documentationURL: nil))
                     }
                 case .failure(let error):
-                    print(error.localizedDescription)
+                    completion(nil, ErrorLimitModel(message: error.localizedDescription, documentationURL: nil))
                 }
             }
     }

@@ -39,13 +39,34 @@ class UserViewController: UIViewController {
     }
     
     func clientCall() {
-        Client.shared.get { [weak self] (userModels) in
+        Client.shared.get { [weak self] (userModels, error)  in
             if let models = userModels {
                 self?.userViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
                     return UserViewModel(withModel: model, withIndex: index)
                 })
+            } else if let errorModel = error {
+                self?.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel))
             }
         }
+    }
+    
+    // MARK: - Actions
+    func prompt(thisErrorModel errorModel:ErrorLimitViewModel) {
+        let alertController = UIAlertController(title: nil, message: errorModel.model.message, preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+        let docuAction = UIAlertAction(title: "Documentation", style: .default) { _ in
+            if let url = errorModel.getDocuURL {
+                UIApplication.shared.open(url)
+            }
+        }
+        
+        alertController.addAction(okayAction)
+        
+        if errorModel.hasDocu {
+            alertController.addAction(docuAction)
+        }
+        
+        present(alertController, animated: true, completion: nil)
     }
 
     // MARK: - Layout

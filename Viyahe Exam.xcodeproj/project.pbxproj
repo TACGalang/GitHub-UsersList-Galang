@@ -15,6 +15,8 @@
 		6A7A59C5260238DB0027111E /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59C4260238DB0027111E /* UserModel.swift */; };
 		6A7A59C92602392D0027111E /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59C82602392D0027111E /* Type.swift */; };
 		6A7A59CD26023B7B0027111E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59CC26023B7B0027111E /* UserViewModel.swift */; };
+		6A7A59D526024CCD0027111E /* ErrorLimitModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59D426024CCC0027111E /* ErrorLimitModel.swift */; };
+		6A7A59D826024D4C0027111E /* ErrorLimitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59D726024D4C0027111E /* ErrorLimitViewModel.swift */; };
 		6A8E46DD260218E900A085A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46DC260218E900A085A5 /* AppDelegate.swift */; };
 		6A8E46DF260218E900A085A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46DE260218E900A085A5 /* SceneDelegate.swift */; };
 		6A8E46E1260218E900A085A5 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46E0260218E900A085A5 /* UserViewController.swift */; };
@@ -34,6 +36,8 @@
 		6A7A59C4260238DB0027111E /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		6A7A59C82602392D0027111E /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		6A7A59CC26023B7B0027111E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		6A7A59D426024CCC0027111E /* ErrorLimitModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLimitModel.swift; sourceTree = "<group>"; };
+		6A7A59D726024D4C0027111E /* ErrorLimitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLimitViewModel.swift; sourceTree = "<group>"; };
 		6A8E46D9260218E900A085A5 /* Viyahe Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viyahe Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8E46DC260218E900A085A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8E46DE260218E900A085A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			children = (
 				6A7A59C7260239190027111E /* Enums */,
 				6A7A59C4260238DB0027111E /* UserModel.swift */,
+				6A7A59D426024CCC0027111E /* ErrorLimitModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				6A7A59CC26023B7B0027111E /* UserViewModel.swift */,
+				6A7A59D726024D4C0027111E /* ErrorLimitViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -275,6 +281,7 @@
 			files = (
 				6A7A59BB260233B70027111E /* UIImage+ViayeExam.swift in Sources */,
 				6A7A59CD26023B7B0027111E /* UserViewModel.swift in Sources */,
+				6A7A59D526024CCD0027111E /* ErrorLimitModel.swift in Sources */,
 				6A8E46E1260218E900A085A5 /* UserViewController.swift in Sources */,
 				6A7A59B8260222780027111E /* UIColor+ViyaheExam.swift in Sources */,
 				6A7A59B42602210B0027111E /* UIFont+ViyaheExam.swift in Sources */,
@@ -283,6 +290,7 @@
 				6A8E46DF260218E900A085A5 /* SceneDelegate.swift in Sources */,
 				6A7A59C22602380A0027111E /* Client.swift in Sources */,
 				6A7A59C5260238DB0027111E /* UserModel.swift in Sources */,
+				6A7A59D826024D4C0027111E /* ErrorLimitViewModel.swift in Sources */,
 				6A7A59B0260220080027111E /* UserViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
