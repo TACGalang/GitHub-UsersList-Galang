@@ -24,12 +24,28 @@ class UserViewController: UIViewController {
         return tableView
     }()
     
+    var userViewModels: [UserViewModel] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     // MARK: - Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setNavitation()
+        clientCall()
+    }
+    
+    func clientCall() {
+        Client.shared.get { [weak self] (userModels) in
+            if let models = userModels {
+                self?.userViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
+                    return UserViewModel(withModel: model, withIndex: index)
+                })
+            }
+        }
     }
 
     // MARK: - Layout
@@ -55,16 +71,15 @@ class UserViewController: UIViewController {
 extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return userViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UserViewCell
-    
+        cell.viewModel = userViewModels[indexPath.row]
+        
         return cell
     }
-    
-    
 }
 
 // MAKR: - Delegate

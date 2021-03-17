@@ -8,5 +8,6 @@ target 'Viyahe Exam' do
   # Pods for Viyahe Exam
   pod 'SnapKit'
   pod 'Alamofire'
+  pod 'SDWebImage'
 
 end

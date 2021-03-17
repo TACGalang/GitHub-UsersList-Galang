@@ -7,8 +7,18 @@
 
 import UIKit
 import SnapKit
+import SDWebImage
 
 class UserViewCell: UITableViewCell {
+    
+    var viewModel: UserViewModel! {
+        didSet {
+            name.text = viewModel.displayName
+            url.text = viewModel.displayHTMLURL
+            thumbnail.sd_setImage(with: viewModel.getAvatarURL)
+            container.layer.borderColor = viewModel.borderColor.cgColor
+        }
+    }
     
     lazy var container: UIView = {
         let view = UIView()
@@ -24,7 +34,7 @@ class UserViewCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.layer.cornerRadius = 25.0
-        imageView.backgroundColor = .red
+        imageView.clipsToBounds = true
         
         return imageView
     }()
@@ -35,7 +45,6 @@ class UserViewCell: UITableViewCell {
         label.font = .cellTitle
         label.textAlignment = .left
         label.textColor = .black
-        label.text = "@Username"
         
         return label
     }()
@@ -46,7 +55,6 @@ class UserViewCell: UITableViewCell {
         label.font = .cellSubTitle
         label.textAlignment = .left
         label.textColor = .black
-        label.text = "@https://github.com/qwj,ehkqwjhekqjhekqjwhekjqwhekjqw kjwqhekjqw hkqwe qwe jhqwke jhqwke jwhqe "
         label.numberOfLines = 2
         
         return label

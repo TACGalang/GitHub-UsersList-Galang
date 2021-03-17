@@ -5,22 +5,34 @@
 //  Created by Tristan Angelo Galang on 3/17/21.
 //
 
-import Foundation
+import UIKit
 
 struct UserViewModel {
-    let login: String
-    let htmlURL: String
-    let avatarURL: String
+    let model: UserModel
+    let index: Int
     
     /// Return URL of avatar
     var getAvatarURL: URL? {
-        return URL(string: avatarURL)
+        return URL(string: model.avatarURL)
+    }
+    
+    /// Return login name with @ prefix as stated in wireframe
+    var displayName: String {
+        return "@\(model.login)"
+    }
+    
+    /// Return login name with @ prefix as stated in wireframe
+    var displayHTMLURL: String {
+        return "@\(model.htmlURL)"
+    }
+    
+    var borderColor: UIColor {
+        return index.isMultiple(of: 2) ? .greenIndicator : .blueIndicator
     }
     
     // MARK: - Initialization
-    init(withModel model:UserModel) {
-        self.login = model.login
-        self.htmlURL = model.htmlURL
-        self.avatarURL = model.avatarURL
+    init(withModel model:UserModel, withIndex index:Int) {
+        self.model = model
+        self.index = index
     }
 }
