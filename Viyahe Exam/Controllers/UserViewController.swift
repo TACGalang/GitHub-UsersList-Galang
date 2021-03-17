@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  UserViewController.swift
 //  Viyahe Exam
 //
 //  Created by Tristan Angelo Galang on 3/17/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class UserViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -23,6 +23,7 @@ class ViewController: UIViewController {
         
         return tableView
     }()
+    
     
     // MARK: - Initialization
     override func viewDidLoad() {
@@ -51,7 +52,7 @@ class ViewController: UIViewController {
 }
 
 // MARK: - Data Source
-extension ViewController: UITableViewDataSource {
+extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -67,7 +68,7 @@ extension ViewController: UITableViewDataSource {
 }
 
 // MAKR: - Delegate
-extension ViewController: UITableViewDelegate {
+extension UserViewController: UITableViewDelegate {
     
 }
 
