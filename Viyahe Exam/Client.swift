@@ -15,7 +15,7 @@ class Client {
     
     /// Base UrL
     var baseURL:String {
-        #if STAGING
+        #if DEBUGDEV
         return "https://api.github.com/users"
         #else
         return "https://api.github.com/users"
