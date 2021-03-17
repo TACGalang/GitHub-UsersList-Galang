@@ -42,7 +42,8 @@ class UserViewController: UIViewController {
         Client.shared.get { [weak self] (userModels, error)  in
             if let models = userModels {
                 self?.userViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
-                    return UserViewModel(withModel: model, withIndex: index)
+                    let finalIndex = index + 1
+                    return UserViewModel(withModel: model, withIndex: finalIndex)
                 })
             } else if let errorModel = error {
                 self?.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel))
