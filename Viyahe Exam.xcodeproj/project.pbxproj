@@ -12,9 +12,12 @@
 		6A8E46E1260218E900A085A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46E0260218E900A085A5 /* ViewController.swift */; };
 		6A8E46E6260218EB00A085A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6A8E46E5260218EB00A085A5 /* Assets.xcassets */; };
 		6A8E46E9260218EB00A085A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A8E46E7260218EB00A085A5 /* LaunchScreen.storyboard */; };
+		92244FFC9FB2E65BF28BBCFF /* Pods_Viyahe_Exam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 004E05C68C9EAE599802049B /* Pods_Viyahe_Exam.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		004E05C68C9EAE599802049B /* Pods_Viyahe_Exam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Viyahe_Exam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28FA127C67C18FF245726D24 /* Pods-Viyahe Exam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viyahe Exam.debug.xcconfig"; path = "Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam.debug.xcconfig"; sourceTree = "<group>"; };
 		6A8E46D9260218E900A085A5 /* Viyahe Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viyahe Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8E46DC260218E900A085A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8E46DE260218E900A085A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -22,6 +25,7 @@
 		6A8E46E5260218EB00A085A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6A8E46E8260218EB00A085A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6A8E46EA260218EB00A085A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AF06C84BCD7080C8650E6D96 /* Pods-Viyahe Exam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viyahe Exam.release.xcconfig"; path = "Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92244FFC9FB2E65BF28BBCFF /* Pods_Viyahe_Exam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5938CF2F1AA4F01FD23EB117 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				28FA127C67C18FF245726D24 /* Pods-Viyahe Exam.debug.xcconfig */,
+				AF06C84BCD7080C8650E6D96 /* Pods-Viyahe Exam.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6A8E46D0260218E900A085A5 = {
 			isa = PBXGroup;
 			children = (
 				6A8E46DB260218E900A085A5 /* Viyahe Exam */,
 				6A8E46DA260218E900A085A5 /* Products */,
+				5938CF2F1AA4F01FD23EB117 /* Pods */,
+				CF07A68E6109C45DF4F0290D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +113,14 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		CF07A68E6109C45DF4F0290D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				004E05C68C9EAE599802049B /* Pods_Viyahe_Exam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +128,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6A8E46ED260218EB00A085A5 /* Build configuration list for PBXNativeTarget "Viyahe Exam" */;
 			buildPhases = (
+				8AE53C3A979429CD20E0E84A /* [CP] Check Pods Manifest.lock */,
 				6A8E46D5260218E900A085A5 /* Sources */,
 				6A8E46D6260218E900A085A5 /* Frameworks */,
 				6A8E46D7260218E900A085A5 /* Resources */,
+				18055C552FFD6A3D8E53CA6F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -159,6 +186,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18055C552FFD6A3D8E53CA6F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8AE53C3A979429CD20E0E84A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Viyahe Exam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6A8E46D5260218E900A085A5 /* Sources */ = {
@@ -303,6 +372,7 @@
 		};
 		6A8E46EE260218EB00A085A5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 28FA127C67C18FF245726D24 /* Pods-Viyahe Exam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -324,6 +394,7 @@
 		};
 		6A8E46EF260218EB00A085A5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF06C84BCD7080C8650E6D96 /* Pods-Viyahe Exam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -8,11 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     // MARK: - Initialization
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setNavitation()
     }
 
     // MARK: - Layout
@@ -21,6 +22,10 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         
+    }
+    
+    func setNavitation() {
+        navigationItem.title = "GITHUB USERS"
     }
 
 }
