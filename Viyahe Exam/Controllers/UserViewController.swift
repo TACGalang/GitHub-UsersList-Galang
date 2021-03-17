@@ -20,15 +20,28 @@ class UserViewController: UIViewController {
         tableView.dataSource = self
         tableView.backgroundColor = .clear
         tableView.register(UserViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.tableFooterView = footerLoader
         
         return tableView
     }()
     
-    var userViewModels: [UserViewModel] = [] {
+    lazy var footerLoader: UIActivityIndicatorView = {
+        let view = UIActivityIndicatorView(style: .gray)
+        view.color = .darkGray
+        view.hidesWhenStopped = true
+        view.frame = CGRect(x: 0, y: 0, width: 100, height: 200)
+        
+        return view
+    }()
+    
+    var viewModels: [UserViewModel] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var lastLoginIndex: Int = 0
+    var hasNext: Bool = true
     
     // MARK: - Initialization
     override func viewDidLoad() {
@@ -39,15 +52,22 @@ class UserViewController: UIViewController {
     }
     
     func clientCall() {
-        Client.shared.get { [weak self] (userModels, error)  in
+        Client.shared.get(userSinceID: lastLoginIndex) { [weak self] (userModels, error)  in
+            guard let self = self else { return }
+            
             if let models = userModels {
-                self?.userViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
+                let newViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
                     let finalIndex = index + 1
                     return UserViewModel(withModel: model, withIndex: finalIndex)
                 })
+                
+                self.viewModels.append(contentsOf: newViewModels)
             } else if let errorModel = error {
-                self?.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel))
+                self.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel))
+                self.hasNext = false
             }
+            
+            self.footerLoader.stopAnimating()
         }
     }
     
@@ -68,6 +88,21 @@ class UserViewController: UIViewController {
         }
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+                
+        let offsetY = scrollView.contentOffset.y
+        let contentHeight = scrollView.contentSize.height - scrollView.frame.height
+
+        if offsetY > contentHeight &&
+            !footerLoader.isAnimating &&
+            hasNext, let lastModel = viewModels.last {
+            
+            lastLoginIndex = lastModel.model.id
+            footerLoader.startAnimating()
+            clientCall()
+        }
     }
 
     // MARK: - Layout
@@ -93,12 +128,12 @@ class UserViewController: UIViewController {
 extension UserViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userViewModels.count
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UserViewCell
-        cell.viewModel = userViewModels[indexPath.row]
+        cell.viewModel = viewModels[indexPath.row]
         
         return cell
     }
