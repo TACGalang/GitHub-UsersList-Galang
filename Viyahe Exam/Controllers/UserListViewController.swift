@@ -1,5 +1,5 @@
 //
-//  UserViewController.swift
+//  UserListViewController.swift
 //  Viyahe Exam
 //
 //  Created by Tristan Angelo Galang on 3/17/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserListViewController: UIViewController {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -24,7 +24,7 @@ class UserViewController: UIViewController {
         return tableView
     }()
     
-    var userViewModels: [UserViewModel] = [] {
+    var viewModels: [UserViewModel] = [] {
         didSet {
             tableView.reloadData()
         }
@@ -40,37 +40,24 @@ class UserViewController: UIViewController {
     
     func clientCall() {
         Client.shared.get { [weak self] (userModels, error)  in
+            guard let self = self else { return }
+            
             if let models = userModels {
-                self?.userViewModels = models.enumerated().map({ (index, model) -> UserViewModel in
+                self.viewModels = models.enumerated().map({ (index, model) -> UserViewModel in
                     let finalIndex = index + 1
                     return UserViewModel(withModel: model, withIndex: finalIndex)
                 })
             } else if let errorModel = error {
-                self?.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel))
+                Prompt.shared.prompt(thisErrorModel: ErrorLimitViewModel(withModel: errorModel), withViewController: self)
             }
         }
     }
     
     // MARK: - Actions
-    func prompt(thisErrorModel errorModel:ErrorLimitViewModel) {
-        let alertController = UIAlertController(title: nil, message: errorModel.model.message, preferredStyle: .alert)
-        let okayAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-        let docuAction = UIAlertAction(title: "Documentation", style: .default) { _ in
-            if let url = errorModel.getDocuURL {
-                UIApplication.shared.open(url)
-            }
-        }
-        
-        alertController.addAction(okayAction)
-        
-        if errorModel.hasDocu {
-            alertController.addAction(docuAction)
-        }
-        
-        present(alertController, animated: true, completion: nil)
-    }
+    
 
     // MARK: - Layout
+    // Layout using NSLayout Visual Format
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -78,10 +65,12 @@ class UserViewController: UIViewController {
         
         view.addSubview(tableView)
         
-        tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
-        tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0).isActive = true
-        tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
+        let views = [
+            "tableView": tableView
+        ]
+        
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[tableView]|", options: [], metrics: nil, views: views))
+        view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[tableView]|", options: [], metrics: nil, views: views))
     }
     
     func setNavitation() {
@@ -90,22 +79,35 @@ class UserViewController: UIViewController {
 }
 
 // MARK: - Data Source
-extension UserViewController: UITableViewDataSource {
+extension UserListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return userViewModels.count
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UserViewCell
-        cell.viewModel = userViewModels[indexPath.row]
+        cell.viewModel = viewModels[indexPath.row]
         
         return cell
     }
 }
 
 // MAKR: - Delegate
-extension UserViewController: UITableViewDelegate {
+extension UserListViewController: UITableViewDelegate {
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            if let cell = tableView.cellForRow(at: indexPath) as? UserViewCell {
+                cell.setSelected(false, animated: true)
+            }
+        }
+        
+        let userDetailedVC = UserDetailedViewController()
+        userDetailedVC.viewModel = viewModels[indexPath.row]
+        navigationController?.pushViewController(userDetailedVC, animated: true)
+        
+    }
 }
 
