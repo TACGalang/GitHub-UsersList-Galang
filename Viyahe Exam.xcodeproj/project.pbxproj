@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A7A59B0260220080027111E /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59AF260220080027111E /* UserViewCell.swift */; };
+		6A7A59B42602210B0027111E /* UIFont+ViyaheExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59B32602210B0027111E /* UIFont+ViyaheExam.swift */; };
+		6A7A59B8260222780027111E /* UIColor+ViyaheExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59B7260222780027111E /* UIColor+ViyaheExam.swift */; };
+		6A7A59BB260233B70027111E /* UIImage+ViayeExam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7A59BA260233B70027111E /* UIImage+ViayeExam.swift */; };
 		6A8E46DD260218E900A085A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46DC260218E900A085A5 /* AppDelegate.swift */; };
 		6A8E46DF260218E900A085A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46DE260218E900A085A5 /* SceneDelegate.swift */; };
 		6A8E46E1260218E900A085A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8E46E0260218E900A085A5 /* ViewController.swift */; };
@@ -18,6 +22,10 @@
 /* Begin PBXFileReference section */
 		004E05C68C9EAE599802049B /* Pods_Viyahe_Exam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Viyahe_Exam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		28FA127C67C18FF245726D24 /* Pods-Viyahe Exam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Viyahe Exam.debug.xcconfig"; path = "Target Support Files/Pods-Viyahe Exam/Pods-Viyahe Exam.debug.xcconfig"; sourceTree = "<group>"; };
+		6A7A59AF260220080027111E /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
+		6A7A59B32602210B0027111E /* UIFont+ViyaheExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+ViyaheExam.swift"; sourceTree = "<group>"; };
+		6A7A59B7260222780027111E /* UIColor+ViyaheExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+ViyaheExam.swift"; sourceTree = "<group>"; };
+		6A7A59BA260233B70027111E /* UIImage+ViayeExam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+ViayeExam.swift"; sourceTree = "<group>"; };
 		6A8E46D9260218E900A085A5 /* Viyahe Exam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Viyahe Exam.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A8E46DC260218E900A085A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6A8E46DE260218E900A085A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,8 +54,17 @@
 				28FA127C67C18FF245726D24 /* Pods-Viyahe Exam.debug.xcconfig */,
 				AF06C84BCD7080C8650E6D96 /* Pods-Viyahe Exam.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6A7A59B2260220F40027111E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				6A7A59B32602210B0027111E /* UIFont+ViyaheExam.swift */,
+				6A7A59B7260222780027111E /* UIColor+ViyaheExam.swift */,
+				6A7A59BA260233B70027111E /* UIImage+ViayeExam.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		6A8E46D0260218E900A085A5 = {
@@ -71,6 +88,7 @@
 		6A8E46DB260218E900A085A5 /* Viyahe Exam */ = {
 			isa = PBXGroup;
 			children = (
+				6A7A59B2260220F40027111E /* Helpers */,
 				6A8E46F426021AF000A085A5 /* Models */,
 				6A8E46F526021AF700A085A5 /* ViewModels */,
 				6A8E46F326021AE600A085A5 /* Views */,
@@ -95,6 +113,7 @@
 		6A8E46F326021AE600A085A5 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				6A7A59AF260220080027111E /* UserViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -234,9 +253,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A7A59BB260233B70027111E /* UIImage+ViayeExam.swift in Sources */,
 				6A8E46E1260218E900A085A5 /* ViewController.swift in Sources */,
+				6A7A59B8260222780027111E /* UIColor+ViyaheExam.swift in Sources */,
+				6A7A59B42602210B0027111E /* UIFont+ViyaheExam.swift in Sources */,
 				6A8E46DD260218E900A085A5 /* AppDelegate.swift in Sources */,
 				6A8E46DF260218E900A085A5 /* SceneDelegate.swift in Sources */,
+				6A7A59B0260220080027111E /* UserViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
