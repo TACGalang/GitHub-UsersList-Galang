@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 11.0, *) {} else {
             window = UIWindow(frame: UIScreen.main.bounds)
             window?.makeKeyAndVisible()
-            window?.rootViewController = UINavigationController(rootViewController: UserViewController()) 
+            window?.rootViewController = UINavigationController(rootViewController: UserListViewController()) 
         }
         
         return true

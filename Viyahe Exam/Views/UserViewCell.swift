@@ -13,7 +13,7 @@ class UserViewCell: UITableViewCell {
     
     var viewModel: UserViewModel! {
         didSet {
-            name.text = viewModel.displayName
+            name.text = viewModel.displayLoginName
             url.text = viewModel.displayHTMLURL
             thumbnail.sd_setImage(with: viewModel.getAvatarURL)
             container.layer.borderColor = viewModel.borderColor.cgColor
@@ -84,10 +84,15 @@ class UserViewCell: UITableViewCell {
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
+        if selected {
+            container.backgroundColor = viewModel.borderColor
+        } else {
+            container.backgroundColor = .clear
+        }
     }
 
     // MARK: - Layout
+    // Layout using NSLayoutAnchor
     func setupLayout() {
         
         addSubview(container)

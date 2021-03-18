@@ -69,6 +69,33 @@ class Client {
                 }
             }
     }
+    
+    func get(userDetail loginName:String,
+             WithCompletion completion: @escaping (_ userModels:UserModel?, _ error: ErrorLimitModel?)->()) {
+        
+        let url = baseURL + "/\(loginName)"
+        
+        alamofireManager.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil)
+            .responseJSON { (response) in
+                
+                switch response.result {
+                case .success(_ ):
+                    if let data = response.data {
+                        if let model = try? JSONDecoder().decode(UserModel.self, from: data) {
+                            completion(model, nil)
+                        } else if let model = try? JSONDecoder().decode(ErrorLimitModel.self, from: data) {
+                            // decode error here
+                            completion(nil, model)
+                        }
+                    } else {
+                        // decode error here
+                        completion(nil, ErrorLimitModel(message: "Unable to decode.", documentationURL: nil))
+                    }
+                case .failure(let error):
+                    completion(nil, ErrorLimitModel(message: error.localizedDescription, documentationURL: nil))
+                }
+            }
+    }
 
 }
 
